@@ -113,6 +113,7 @@ a:hover {
 
 #nav ul.icons {
   justify-content: flex-end;
+  margin-right: 1em;
 }
 
 #nav ul li {
@@ -144,6 +145,13 @@ a:hover {
   justify-content: center;
   border-radius: 100%;
   font-size: 1.25em;
+  padding: 0;
+  margin: 0 0.25em;
+}
+
+#nav ul.icons li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 /* Main */
@@ -294,6 +302,25 @@ ul.actions.special {
   gap: 1em;
 }
 
+#footer .icons li a {
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  font-size: 1.25em;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-bottom: none;
+}
+
+#footer .icons li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
 /* Copyright */
 #copyright {
   text-align: center;
@@ -322,6 +349,7 @@ ul.actions.special {
   #nav ul.icons {
     justify-content: flex-start;
     margin-top: 1em;
+    margin-left: 1em;
   }
   
   .posts {
