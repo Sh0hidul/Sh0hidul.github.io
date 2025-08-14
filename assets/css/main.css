@@ -114,6 +114,8 @@ a:hover {
 #nav ul.icons {
   justify-content: flex-end;
   margin-right: 1em;
+  display: flex;
+  align-items: center;
 }
 
 #nav ul li {
@@ -137,6 +139,10 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+#nav ul.icons li {
+  margin: 0 0.5em;
+}
+
 #nav ul.icons li a {
   width: 2.5em;
   height: 2.5em;
@@ -146,7 +152,7 @@ a:hover {
   border-radius: 100%;
   font-size: 1.25em;
   padding: 0;
-  margin: 0 0.25em;
+  margin: 0;
 }
 
 #nav ul.icons li a:hover {
@@ -302,6 +308,10 @@ ul.actions.special {
   gap: 1em;
 }
 
+#footer .icons li {
+  margin-right: 1em;
+}
+
 #footer .icons li a {
   width: 2.5em;
   height: 2.5em;
@@ -350,6 +360,10 @@ ul.actions.special {
     justify-content: flex-start;
     margin-top: 1em;
     margin-left: 1em;
+  }
+
+  #nav ul.icons li {
+    margin: 0.5em 1em 0.5em 0;
   }
   
   .posts {
