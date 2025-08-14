@@ -1,0 +1,28 @@
+/* Styles for when JavaScript is disabled */
+body.is-preload #wrapper {
+  opacity: 1;
+}
+
+body.is-preload #intro {
+  opacity: 1;
+}
+
+body.is-preload #header {
+  opacity: 1;
+}
+
+body.is-preload #main {
+  opacity: 1;
+}
+
+body.is-preload #nav {
+  opacity: 1;
+}
+
+body.is-preload #footer {
+  opacity: 1;
+}
+
+body.is-preload #copyright {
+  opacity: 1;
+} 
