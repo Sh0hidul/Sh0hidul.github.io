@@ -140,7 +140,8 @@ a:hover {
 }
 
 #nav ul.icons li {
-  margin: 0 0.5em;
+  margin: 0 1em;
+  display: inline-block;
 }
 
 #nav ul.icons li a {
@@ -153,6 +154,7 @@ a:hover {
   font-size: 1.25em;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 #nav ul.icons li a:hover {
@@ -309,7 +311,8 @@ ul.actions.special {
 }
 
 #footer .icons li {
-  margin-right: 1em;
+  margin-right: 1.5em;
+  display: inline-block;
 }
 
 #footer .icons li a {
@@ -324,6 +327,7 @@ ul.actions.special {
   color: rgba(255, 255, 255, 0.5);
   transition: background-color 0.2s ease, color 0.2s ease;
   border-bottom: none;
+  position: relative;
 }
 
 #footer .icons li a:hover {
@@ -364,6 +368,7 @@ ul.actions.special {
 
   #nav ul.icons li {
     margin: 0.5em 1em 0.5em 0;
+    display: inline-block;
   }
   
   .posts {
