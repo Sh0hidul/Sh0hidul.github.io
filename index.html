@@ -1,0 +1,831 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Portfolio of Md Shohidul Haque</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+		<style>
+			/* Reset and Base Styles */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--primary-color: #1e252d;
+				--accent-color: #0077b5;
+				--text-color: #333;
+				--light-text: #666;
+				--highlight: #4CAF50;
+				--gradient-1: linear-gradient(120deg, #0077b5, #4CAF50);
+				--gradient-2: linear-gradient(120deg, #1e252d, #0077b5);
+				--shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+				--shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+				--shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				line-height: 1.5;
+				color: var(--text-color);
+				background-color: #fff;
+				margin: 0;
+				padding: 0;
+				min-height: 100vh;
+				width: 100vw;
+				overflow-x: hidden;
+			}
+
+			/* Layout */
+			#wrapper {
+				width: 100vw;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				margin: 0;
+				padding: 0;
+			}
+
+			/* Browser-like header */
+			.browser-header {
+				background-color: var(--primary-color);
+				padding: 12px 15px;
+				display: flex;
+				align-items: center;
+				width: 100%;
+			}
+
+			.browser-dots {
+				display: flex;
+				gap: 6px;
+			}
+
+			.dot {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				transition: background-color 0.3s ease;
+			}
+
+			.dot.red {
+				background-color: #ff5f56;
+			}
+
+			.dot.yellow {
+				background-color: #ffbd2e;
+			}
+
+			.dot.blue {
+				background-color: #2196F3;
+			}
+
+			/* Active dot indicator */
+			.dot.active {
+				background-color: var(--highlight);
+				box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+			}
+
+			/* Navigation */
+			#nav {
+				border-bottom: 1px solid #eee;
+				width: 100%;
+			}
+
+			.tabs {
+				display: flex;
+				list-style: none;
+				padding: 0 30px;
+				width: 100%;
+			}
+
+			.tabs li {
+				margin-right: 40px;
+			}
+
+			.tabs li a {
+				display: block;
+				padding: 18px 0;
+				color: var(--light-text);
+				text-decoration: none;
+				font-weight: 500;
+				position: relative;
+				transition: color 0.3s;
+				font-size: 18px;
+				letter-spacing: 0.3px;
+			}
+
+			.tabs li.active a,
+			.tabs li a:hover {
+				color: var(--text-color);
+			}
+
+			.tabs li.active a:after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: var(--highlight);
+			}
+
+			/* Main Content */
+			#main {
+				flex: 1;
+				width: 100%;
+				padding: 40px 0;
+			}
+
+			.section {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 30px;
+				animation: fadeIn 0.5s ease-in-out;
+				position: relative;
+			}
+			
+			.section::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: 
+					radial-gradient(circle at 25% 10%, rgba(0, 119, 181, 0.03) 0%, transparent 15%),
+					radial-gradient(circle at 75% 40%, rgba(76, 175, 80, 0.03) 0%, transparent 15%),
+					radial-gradient(circle at 15% 70%, rgba(0, 119, 181, 0.03) 0%, transparent 15%),
+					radial-gradient(circle at 85% 90%, rgba(76, 175, 80, 0.03) 0%, transparent 15%);
+				z-index: -1;
+				pointer-events: none;
+			}
+
+			@keyframes fadeIn {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+
+			h1 {
+				font-size: 38px;
+				margin-bottom: 30px;
+				font-weight: 700;
+				color: var(--primary-color);
+				letter-spacing: 0.5px;
+				position: relative;
+				display: inline-block;
+				font-family: 'Playfair Display', serif;
+			}
+			
+			h1::after {
+				content: '';
+				position: absolute;
+				width: 60%;
+				height: 4px;
+				background: var(--gradient-1);
+				bottom: -10px;
+				left: 0;
+				border-radius: 2px;
+			}
+
+			h2 {
+				font-size: 28px;
+				margin: 50px 0 25px;
+				font-weight: 600;
+				color: var(--primary-color);
+				letter-spacing: 0.3px;
+				position: relative;
+				display: inline-block;
+				padding-bottom: 8px;
+				font-family: 'Playfair Display', serif;
+			}
+			
+			h2::after {
+				content: '';
+				position: absolute;
+				width: 40%;
+				height: 3px;
+				background: var(--highlight);
+				bottom: 0;
+				left: 0;
+				border-radius: 2px;
+			}
+
+			h3 {
+				font-size: 20px;
+				margin: 30px 0 20px;
+				font-weight: 600;
+				color: var(--primary-color);
+				letter-spacing: 0.2px;
+			}
+
+			p {
+				margin-bottom: 22px;
+				color: var(--text-color);
+				font-size: 17px;
+				line-height: 1.7;
+				max-width: 75ch;
+				text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+				letter-spacing: 0.2px;
+			}
+			
+			p:first-of-type {
+				font-size: 19px;
+				color: var(--primary-color);
+				font-weight: 500;
+				font-family: 'Lato', sans-serif;
+				letter-spacing: 0.3px;
+			}
+
+			/* Profile Section */
+			.about-container {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+			}
+
+			.profile-container {
+				display: flex;
+				gap: 50px;
+				align-items: flex-start;
+				width: 100%;
+				margin-bottom: 40px;
+			}
+
+			.profile-image {
+				width: 320px;
+				height: 320px;
+				overflow: hidden;
+				border-radius: 50%;
+				box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				flex-shrink: 0;
+				border: 5px solid #fff;
+				position: relative;
+			}
+
+			.profile-image::before {
+				content: '';
+				position: absolute;
+				top: -8px;
+				left: -8px;
+				right: -8px;
+				bottom: -8px;
+				border-radius: 50%;
+				background: linear-gradient(45deg, #0077b5, #4CAF50);
+				z-index: -1;
+			}
+
+			.profile-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				object-position: center top;
+				border-radius: 50%;
+				transition: transform 0.5s ease;
+			}
+			
+			.profile-image:hover img {
+				transform: scale(1.05);
+			}
+
+			.profile-info {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				z-index: 1;
+				background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+				padding: 25px 30px;
+				border-radius: 10px;
+				box-shadow: var(--shadow-sm);
+			}
+			
+			.profile-info strong {
+				color: var(--accent-color);
+				font-weight: 600;
+			}
+			
+			.intro-text {
+				font-family: 'Playfair Display', serif;
+				font-weight: 600;
+				font-size: 20px;
+				color: var(--primary-color);
+				position: relative;
+				display: inline-block;
+			}
+			
+			.intro-text::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background: var(--gradient-1);
+				border-radius: 1px;
+			}
+			
+			.highlight {
+				background: linear-gradient(120deg, rgba(0, 119, 181, 0.1), rgba(76, 175, 80, 0.1));
+				padding: 2px 0;
+				border-bottom: 2px solid var(--highlight);
+			}
+
+			.skill-list {
+				list-style-type: none;
+				margin-bottom: 30px;
+			}
+
+			.skill-list li {
+				position: relative;
+				padding-left: 28px;
+				margin-bottom: 18px;
+				color: var(--text-color);
+				font-size: 17px;
+				line-height: 1.6;
+				max-width: 75ch;
+				transition: transform 0.2s ease;
+			}
+			
+			.skill-list li:hover {
+				transform: translateX(5px);
+			}
+
+			.skill-list li:before {
+				content: "▹";
+				position: absolute;
+				left: 0;
+				color: var(--accent-color);
+				font-weight: bold;
+				font-size: 20px;
+				transition: transform 0.2s ease;
+			}
+			
+			.skill-list li:hover:before {
+				transform: scale(1.2) translateX(2px);
+			}
+
+			.impact-list {
+				list-style-type: none;
+				margin-bottom: 30px;
+			}
+
+			.impact-list li {
+				position: relative;
+				padding-left: 28px;
+				margin-bottom: 18px;
+				color: var(--text-color);
+				font-size: 17px;
+				line-height: 1.6;
+				max-width: 75ch;
+				transition: transform 0.2s ease;
+			}
+			
+			.impact-list li:hover {
+				transform: translateX(5px);
+			}
+
+			.impact-list li:before {
+				content: "→";
+				position: absolute;
+				left: 0;
+				color: var(--highlight);
+				font-weight: bold;
+				font-size: 20px;
+				transition: transform 0.2s ease;
+			}
+			
+			.impact-list li:hover:before {
+				transform: translateX(3px);
+			}
+
+			.highlight {
+				color: var(--accent-color);
+				font-weight: 500;
+			}
+			
+			.skill-list li strong {
+				color: var(--accent-color);
+				font-weight: 600;
+				position: relative;
+				display: inline-block;
+			}
+			
+			.impact-list li strong {
+				color: var(--highlight);
+				font-size: 110%;
+				font-weight: 700;
+			}
+			
+			.approach-section, .skills-section, .impact-section {
+				background: rgba(255, 255, 255, 0.8);
+				padding: 20px 25px;
+				border-radius: 8px;
+				box-shadow: var(--shadow-sm);
+				margin-bottom: 30px;
+				border-left: 4px solid var(--accent-color);
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+			
+			.approach-section:hover, .skills-section:hover, .impact-section:hover {
+				transform: translateY(-3px);
+				box-shadow: var(--shadow-md);
+			}
+			
+			.conclusion-text {
+				font-family: 'Lato', sans-serif;
+				font-weight: 500;
+				font-size: 18px;
+				color: var(--primary-color);
+				text-align: center;
+				margin-top: 25px;
+				padding-top: 15px;
+				border-top: 1px solid rgba(0, 119, 181, 0.2);
+			}
+
+			/* Contact Section */
+			.contact-section {
+				margin: 50px auto 30px;
+				padding: 30px 40px;
+				background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+				border-radius: 10px;
+				box-shadow: var(--shadow-md);
+				position: relative;
+				border-left: 4px solid var(--accent-color);
+			}
+			
+			.contact-section h2 {
+				margin-top: 0;
+				margin-bottom: 25px;
+				text-align: center;
+				font-family: 'Playfair Display', serif;
+			}
+			
+			.contact-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 30px;
+			}
+			
+			.contact-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+			
+			.contact-icon {
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				background: var(--gradient-1);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 15px;
+				color: white;
+				font-size: 24px;
+				box-shadow: var(--shadow-sm);
+				transition: transform 0.3s ease;
+			}
+			
+			.contact-item:hover .contact-icon {
+				transform: translateY(-5px);
+			}
+			
+			.contact-label {
+				font-weight: 600;
+				color: var(--primary-color);
+				margin-bottom: 5px;
+				font-size: 18px;
+				font-family: 'Lato', sans-serif;
+			}
+			
+			.contact-value {
+				color: var(--text-color);
+				font-size: 16px;
+				line-height: 1.4;
+			}
+			
+			.contact-value a {
+				color: var(--accent-color);
+				text-decoration: none;
+				transition: color 0.3s ease;
+			}
+			
+			.contact-value a:hover {
+				color: var(--highlight);
+			}
+			
+			@media (max-width: 900px) {
+				.contact-grid {
+					grid-template-columns: 1fr;
+					gap: 25px;
+				}
+				
+				.contact-section {
+					padding: 25px;
+				}
+			}
+			
+			/* Social Links */
+			.social-links {
+				margin: 40px auto 30px;
+				text-align: center;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+			}
+
+			.social-icon {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 45px;
+				height: 45px;
+				color: #fff;
+				text-decoration: none;
+				transition: transform 0.3s ease;
+			}
+
+			.linkedin-icon {
+				background-color: #0077b5;
+			}
+
+			.github-icon {
+				background-color: #333;
+			}
+
+			.social-icon:hover {
+				transform: translateY(-3px);
+			}
+
+			/* Footer */
+			footer {
+				padding: 30px 0;
+				text-align: center;
+				color: #666;
+				font-size: 16px;
+				border-top: 1px solid #eee;
+				width: 100%;
+				margin-top: 20px;
+			}
+
+			.copyright {
+				display: inline-block;
+				margin: 0 auto;
+			}
+
+			/* Responsive */
+			@media (max-width: 1200px) {
+				.section {
+					max-width: 900px;
+				}
+				
+				.profile-container {
+					gap: 40px;
+				}
+				
+				.profile-image {
+					width: 280px;
+					height: 280px;
+				}
+			}
+
+			@media (max-width: 900px) {
+				#main {
+					padding: 30px 0;
+				}
+				
+				.section {
+					padding: 0 25px;
+				}
+				
+				.profile-container {
+					flex-direction: column;
+					align-items: center;
+					text-align: center;
+					gap: 30px;
+				}
+				
+				.profile-image {
+					width: 250px;
+					height: 250px;
+				}
+				
+				h1 {
+					text-align: center;
+					font-size: 28px;
+				}
+				
+				h2 {
+					font-size: 22px;
+					margin: 35px 0 18px;
+				}
+				
+				.social-links {
+					margin-top: 50px;
+				}
+				
+				.skill-list li, .impact-list li {
+					padding-left: 0;
+					max-width: 100%;
+					font-family: 'Lato', sans-serif;
+				}
+				
+				.skill-list li:before, .impact-list li:before {
+					position: static;
+					margin-right: 10px;
+				}
+				
+				p {
+					max-width: 100%;
+				}
+			}
+
+			@media (max-width: 768px) {
+				.tabs {
+					padding: 0 20px;
+				}
+				
+				.tabs li {
+					margin-right: 20px;
+				}
+				
+				.tabs li a {
+					font-size: 16px;
+				}
+				
+				h3 {
+					font-size: 18px;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.tabs {
+					padding: 0 15px;
+				}
+				
+				.tabs li {
+					margin-right: 15px;
+				}
+				
+				.tabs li a {
+					font-size: 15px;
+					padding: 15px 0;
+				}
+				
+				#main {
+					padding: 20px 0;
+				}
+				
+				.section {
+					padding: 0 20px;
+				}
+				
+				h1 {
+					font-size: 26px;
+					margin-bottom: 25px;
+				}
+				
+				h2 {
+					font-size: 20px;
+					margin: 30px 0 15px;
+				}
+				
+				.profile-image {
+					width: 220px;
+					height: 220px;
+				}
+				
+				p, .skill-list li, .impact-list li {
+					font-size: 16px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<!-- Browser-like header with dots -->
+			<div class="browser-header">
+				<div class="browser-dots">
+					<span class="dot red active"></span>
+					<span class="dot yellow"></span>
+					<span class="dot blue"></span>
+				</div>
+			</div>
+			
+			<!-- Navigation Tabs -->
+			<nav id="nav">
+				<ul class="tabs">
+					<li class="active"><a href="index.html">About Me</a></li>
+					<!-- <li><a href="resume.html">Resume</a></li> -->
+					<li><a href="projects.html">My Projects</a></li>
+				</ul>
+			</nav>
+			
+			<!-- Main Content -->
+			<div id="main">
+				<section id="about" class="section">
+					<div class="about-container">
+						<h1>About Me</h1>
+						
+						<div class="profile-container">
+							<div class="profile-image">
+								<img src="images/Md Shohidul Haque.jpg" alt="Md Shohidul Haque" />
+							</div>
+							<div class="profile-info">
+								<p><span class="intro-text">My name is Md Shohidul Haque</span>, and I am passionate about using data to make better business decisions. I hold a Master's in Data Analytics and Information Systems from Texas State University, a postgraduate degree in Data Science and Business Analytics from the McCombs School of Business at the University of Texas at Austin, and a Bachelor's in Computer Science and Engineering. This mix of technical and business education gives me both the skills to work with complex data and the vision to connect it to strategy.</p>
+								<p>My interest in data started in 2017 when I was an instructor at the Bangladesh Army's Signal Training Center. I saw how data could improve decision-making and was inspired to learn more. This led me to build strong skills in Python, SQL, machine learning, and tools like Tableau and Power BI. In 2019, I moved to the U.S. to continue my education and start a career in analytics.</p>
+								<p>I bring technical expertise, discipline from my military background, and a focus on results. I enjoy turning large datasets into clear insights, creating dashboards that make decision-making easier, and applying machine learning to solve real business problems. Above all, I value data integrity, accuracy, and security.</p>
+							</div>
+					</div>
+
+						<h2>My Approach</h2>
+						<div class="approach-section">
+							<p>My professional journey is defined by a commitment to the entire data lifecycle, starting with understanding core business needs. I collaborate closely with stakeholders to translate their challenges into precise data questions. This foundational step ensures that every analysis, model, or dashboard I create directly addresses a strategic objective.</p>
+							<p>I am highly proficient in data wrangling and feature engineering, preparing large-scale datasets for analysis to ensure the highest level of accuracy and reliability.</p>
+						</div>
+						
+						<h2>Key Skills & Achievements</h2>
+						<div class="skills-section">
+							<p>I combine technical expertise with a proven ability to communicate complex findings to both technical and non-technical audiences. My skills include:</p>
+							
+							<ul class="skill-list">
+							<li><strong>Data Science:</strong> I develop and deploy machine learning models, perform predictive modeling, and utilize deep learning techniques to solve complex problems and drive innovation.</li>
+							<li><strong>Data Analysis:</strong> I'm skilled in cleaning, analyzing, and visualizing large datasets using tools like SQL, Python, Tableau, and Power BI, creating interactive dashboards that enable faster, data-informed decisions.</li>
+							<li><strong>Business Analysis:</strong> I excel at gathering requirements, modeling business processes, and performing gap analysis to identify critical deficiencies and propose data-backed solutions.</li>
+							<li><strong>Data Security:</strong> With a background in military leadership, I have extensive experience in ensuring data integrity, performing risk assessments, and implementing robust security measures to protect sensitive information.</li>
+						</ul>
+						</div>
+						
+						<h2>Impact Highlights</h2>
+						<div class="impact-section">
+							<ul class="impact-list">
+							<li><strong>20%</strong> Improved data accuracy and reduced manual review time by 15% through the implementation of a predictive model.</li>
+							<li><strong>25%</strong> Enabled faster decision-making for senior leadership by designing interactive dashboards that translated complex data into actionable intelligence.</li>
+							<li><strong>10+ hours/week</strong> Automated a threat detection system and repetitive reporting tasks using Python and SQL scripts, which saved over 10 hours of manual analysis per week.</li>
+						</ul>
+							<p class="conclusion-text">I am eager to apply my diverse skill set to create value and foster data-driven innovation in my next role.</p>
+						</div>
+						
+						<!-- Contact Information -->
+						<div class="contact-section">
+							<h2>Contact Information</h2>
+							<div class="contact-grid">
+								<div class="contact-item">
+									<div class="contact-icon">
+										<i class="fas fa-map-marker-alt"></i>
+									</div>
+									<div class="contact-label">Address</div>
+									<div class="contact-value">7225 Fair Oaks Ave<br>Dallas, TX 75231</div>
+								</div>
+								
+								<div class="contact-item">
+									<div class="contact-icon">
+										<i class="fas fa-phone"></i>
+									</div>
+									<div class="contact-label">Phone</div>
+									<div class="contact-value"><a href="tel:9725710096">(972) 571-0096</a></div>
+								</div>
+								
+								<div class="contact-item">
+									<div class="contact-icon">
+										<i class="fas fa-envelope"></i>
+									</div>
+									<div class="contact-label">Email</div>
+									<div class="contact-value"><a href="mailto:shohid.mhaque@gmail.com">shohid.mhaque@gmail.com</a></div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Social Links -->
+						<div class="social-links">
+							<a href="https://www.linkedin.com/in/md-shohidul-haque-84932767/" target="_blank" class="social-icon linkedin-icon">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+							<a href="https://github.com/Sh0hidul" target="_blank" class="social-icon github-icon">
+								<i class="fab fa-github"></i>
+							</a>
+								</div>
+							</div>
+						</section>
+					</div>
+
+				<!-- Footer -->
+			<footer>
+				<p class="copyright">&copy; All rights reserved | Design: Customised by Md Shohidul Haque</p>
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

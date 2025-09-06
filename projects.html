@@ -1,0 +1,768 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Projects - Md Shohidul Haque</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<style>
+			/* Reset and Base Styles */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--primary-color: #1e252d;
+				--accent-color: #0077b5;
+				--text-color: #333;
+				--light-text: #666;
+				--highlight: #4CAF50;
+				--gradient-1: linear-gradient(120deg, #0077b5, #4CAF50);
+				--gradient-2: linear-gradient(120deg, #1e252d, #0077b5);
+				--shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+				--shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+				--shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+				--card-bg: #ffffff;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				line-height: 1.5;
+				color: var(--text-color);
+				background-color: #fff;
+				margin: 0;
+				padding: 0;
+				min-height: 100vh;
+				width: 100vw;
+				overflow-x: hidden;
+			}
+
+			/* Layout */
+			#wrapper {
+				width: 100vw;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				margin: 0;
+				padding: 0;
+			}
+
+			/* Browser-like header */
+			.browser-header {
+				background-color: var(--primary-color);
+				padding: 12px 15px;
+				display: flex;
+				align-items: center;
+				width: 100%;
+			}
+
+			.browser-dots {
+				display: flex;
+				gap: 6px;
+			}
+
+			.dot {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				transition: background-color 0.3s ease;
+			}
+
+			.dot.red {
+				background-color: #ff5f56;
+			}
+
+			.dot.yellow {
+				background-color: #ffbd2e;
+			}
+
+			.dot.blue {
+				background-color: #2196F3;
+				box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+			}
+
+			/* Active dot indicator */
+			.dot.active {
+				background-color: #4CAF50;
+				box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+			}
+
+			/* Navigation */
+			#nav {
+				border-bottom: 1px solid #eee;
+				width: 100%;
+			}
+
+			.tabs {
+				display: flex;
+				list-style: none;
+				padding: 0 30px;
+				width: 100%;
+			}
+
+			.tabs li {
+				margin-right: 40px;
+			}
+
+			.tabs li a {
+				display: block;
+				padding: 18px 0;
+				color: var(--light-text);
+				text-decoration: none;
+				font-weight: 500;
+				position: relative;
+				transition: color 0.3s;
+				font-size: 18px;
+				letter-spacing: 0.3px;
+			}
+
+			.tabs li.active a,
+			.tabs li a:hover {
+				color: var(--text-color);
+			}
+
+			.tabs li.active a:after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: var(--highlight);
+			}
+
+			/* Main Content */
+			#main {
+				flex: 1;
+				width: 100%;
+				padding: 40px 30px;
+			}
+
+			.section {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				animation: fadeIn 0.5s ease-in-out;
+				position: relative;
+			}
+			
+			.section::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: 
+					radial-gradient(circle at 25% 10%, rgba(0, 119, 181, 0.03) 0%, transparent 15%),
+					radial-gradient(circle at 75% 40%, rgba(76, 175, 80, 0.03) 0%, transparent 15%),
+					radial-gradient(circle at 15% 70%, rgba(0, 119, 181, 0.03) 0%, transparent 15%),
+					radial-gradient(circle at 85% 90%, rgba(76, 175, 80, 0.03) 0%, transparent 15%);
+				z-index: -1;
+				pointer-events: none;
+			}
+
+			@keyframes fadeIn {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+
+			h1 {
+				font-size: 36px;
+				margin-bottom: 30px;
+				font-weight: 700;
+				color: var(--primary-color);
+				letter-spacing: 0.5px;
+				text-align: center;
+				position: relative;
+				display: inline-block;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			
+			h1::after {
+				content: '';
+				position: absolute;
+				width: 60%;
+				height: 4px;
+				background: var(--gradient-1);
+				bottom: -10px;
+				left: 20%;
+				border-radius: 2px;
+			}
+
+			h2 {
+				font-size: 24px;
+				margin-bottom: 12px;
+				font-weight: 600;
+				color: var(--primary-color);
+				position: relative;
+				display: inline-block;
+			}
+			
+			.project-content h2 {
+				font-size: 22px;
+				transition: color 0.3s ease;
+			}
+			
+			.project-card:hover .project-content h2 {
+				color: var(--accent-color);
+			}
+
+			h3 {
+				font-size: 19px;
+				font-weight: 600;
+				margin-bottom: 10px;
+				color: var(--text-color);
+			}
+
+			h4 {
+				font-size: 18px;
+				font-weight: 500;
+				margin-bottom: 12px;
+				color: var(--accent-color);
+				letter-spacing: 0.5px;
+				text-transform: uppercase;
+				font-size: 14px;
+			}
+
+			p {
+				margin-bottom: 15px;
+				color: var(--text-color);
+				font-size: 16px;
+				line-height: 1.6;
+			}
+			
+			.project-content p {
+				color: var(--light-text);
+				font-size: 15px;
+				line-height: 1.6;
+			}
+
+			/* Projects Grid */
+			.projects-intro {
+				text-align: center;
+				margin-bottom: 40px;
+				width: 100%;
+			}
+
+			.projects-intro p {
+				max-width: 800px;
+				margin: 0 auto 20px;
+				font-size: 18px;
+			}
+
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 30px;
+				margin-bottom: 40px;
+				width: 100%;
+				padding: 0;
+			}
+
+			.project-card {
+				background-color: var(--card-bg);
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: var(--shadow-sm);
+				transition: all 0.4s ease;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				border: 1px solid rgba(0,0,0,0.05);
+			}
+
+			.project-card:hover {
+				transform: translateY(-8px);
+				box-shadow: var(--shadow-lg);
+			}
+			
+			.project-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 4px;
+				background: var(--gradient-1);
+				transform: scaleX(0);
+				transform-origin: left;
+				transition: transform 0.4s ease;
+			}
+			
+			.project-card:hover::before {
+				transform: scaleX(1);
+			}
+
+			.project-image {
+				width: 100%;
+				height: 220px;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.project-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.5s ease;
+			}
+
+			.project-card:hover .project-image img {
+				transform: scale(1.08);
+			}
+			
+			.project-image::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.05) 100%);
+				pointer-events: none;
+			}
+
+			.project-content {
+				padding: 28px;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				background-color: var(--card-bg);
+				position: relative;
+				z-index: 1;
+			}
+
+			.project-skills {
+				margin-top: 20px;
+				padding-top: 20px;
+				border-top: 1px solid rgba(0,0,0,0.05);
+				position: relative;
+			}
+			
+			.project-skills::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50px;
+				height: 2px;
+				background: var(--highlight);
+			}
+
+			.project-button {
+				display: inline-block;
+				background-color: transparent;
+				color: var(--accent-color);
+				padding: 10px 20px;
+				border-radius: 6px;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 15px;
+				transition: all 0.3s ease;
+				margin-top: auto;
+				align-self: flex-start;
+				margin-top: 20px;
+				border: 2px solid var(--accent-color);
+				letter-spacing: 0.5px;
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+			}
+			
+			.project-button::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0%;
+				height: 100%;
+				background-color: var(--accent-color);
+				transition: width 0.3s ease;
+				z-index: -1;
+			}
+
+			.project-button:hover {
+				color: #fff;
+			}
+			
+			.project-button:hover::before {
+				width: 100%;
+			}
+
+			/* Footer */
+			footer {
+				padding: 30px 0;
+				text-align: center;
+				color: #666;
+				font-size: 16px;
+				border-top: 1px solid #eee;
+				width: 100%;
+				margin-top: 20px;
+			}
+
+			.copyright {
+				display: inline-block;
+				margin: 0 auto;
+			}
+
+			/* Social Links */
+			.social-links {
+				margin: 60px auto 30px;
+				text-align: center;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+			}
+
+			.social-icon {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 45px;
+				height: 45px;
+				color: #fff;
+				text-decoration: none;
+				transition: transform 0.3s ease;
+			}
+
+			.linkedin-icon {
+				background-color: #0077b5;
+			}
+
+			.github-icon {
+				background-color: #333;
+			}
+
+			.social-icon:hover {
+				transform: translateY(-3px);
+			}
+
+			/* Responsive */
+			@media (max-width: 1400px) {
+				.projects-grid {
+					grid-template-columns: repeat(3, 1fr);
+					gap: 25px;
+				}
+			}
+
+			@media (max-width: 1200px) {
+				.section {
+					max-width: 900px;
+				}
+				
+				.projects-grid {
+					grid-template-columns: repeat(2, 1fr);
+					gap: 25px;
+				}
+			}
+
+			@media (max-width: 900px) {
+				#main {
+					padding: 30px 20px;
+				}
+				
+				.projects-grid {
+					grid-template-columns: repeat(2, 1fr);
+					gap: 20px;
+				}
+				
+				.project-image {
+					height: 180px;
+				}
+				
+				h1 {
+					font-size: 28px;
+				}
+				
+				h2 {
+					font-size: 22px;
+				}
+				
+				p {
+					font-size: 16px;
+				}
+			}
+
+			@media (max-width: 768px) {
+				.tabs {
+					padding: 0 20px;
+				}
+				
+				.tabs li {
+					margin-right: 20px;
+				}
+				
+				.tabs li a {
+					font-size: 16px;
+				}
+				
+				.projects-grid {
+					grid-template-columns: 1fr;
+				}
+				
+				.project-image {
+					height: 200px;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.tabs {
+					padding: 0 15px;
+				}
+				
+				.tabs li {
+					margin-right: 15px;
+				}
+				
+				.tabs li a {
+					font-size: 15px;
+					padding: 15px 0;
+				}
+				
+				#main {
+					padding: 20px 15px;
+				}
+				
+				h1 {
+					font-size: 24px;
+				}
+				
+				.project-image {
+					height: 180px;
+				}
+				
+				.project-content {
+					padding: 20px;
+				}
+				
+				.project-button {
+					padding: 10px 20px;
+					font-size: 15px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<!-- Browser-like header with dots -->
+			<div class="browser-header">
+				<div class="browser-dots">
+					<span class="dot red"></span>
+					<span class="dot yellow"></span>
+					<span class="dot blue active"></span>
+				</div>
+			</div>
+			
+			<!-- Navigation Tabs -->
+					<nav id="nav">
+				<ul class="tabs">
+					<li><a href="index.html">About Me</a></li>
+					<!-- <li><a href="resume.html">Resume</a></li> -->
+					<li class="active"><a href="projects.html">My Projects</a></li>
+						</ul>
+					</nav>
+
+			<!-- Main Content -->
+					<div id="main">
+				<section id="projects" class="section">
+					<!-- Projects Header -->
+					<div class="projects-intro">
+						<h1>MY PROJECTS</h1>
+					</div>
+					
+					<!-- Projects Grid -->
+					<div class="projects-grid">
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/Early Sepsis prediction.png" alt="Early Sepsis Prediction in ICU" />
+							</div>
+							<div class="project-content">
+								<h2>Early Sepsis Prediction in ICU</h2>
+								<h4>Machine Learning & Healthcare Analytics</h4>
+								<p>Built predictive models using ICU patient data from the PhysioNet 2019 Challenge to detect sepsis 6 hours before onset. Applied 13 classifiers with SMOTE and undersampling to address class imbalance, achieving the best performance with XGBoost (Recall = 0.84, Accuracy = 0.86).</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>Python, scikit-learn, XGBoost, SMOTE, Random Undersampling, Cross-Validation, SHAP, Data Analysis, Model Evaluation, Healthcare Analytics</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/sepsis-prediction-ICU" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/Portfolio optimization.png" alt="Investment Portfolio Optimization" />
+							</div>
+							<div class="project-content">
+								<h2>Investment Portfolio Optimization</h2>
+								<h4>Predictive & Prescriptive Analytics</h4>
+								<p>Forecasted stock prices and optimized portfolio allocation across Amazon, AMD, Cisco, Netflix, and Apple to achieve a target return of 5% while minimizing risk. Applied descriptive analytics for historical trend analysis, predictive analytics using the AutoReg model, and prescriptive analytics for portfolio weight optimization.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>Python, NumPy, Pandas, Scikit-learn, AutoReg (Time Series Forecasting), Portfolio Optimization, Risk Assessment, Data Visualization (Matplotlib, Seaborn), Financial Analytics</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/Investment-Portfolio-Optimization" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/FoodHub Order Analysis.png" alt="FoodHub Order Analysis" />
+							</div>
+							<div class="project-content">
+										<h2>FoodHub Order Analysis using Python</h2>
+										<h4>Python</h4>
+								<p>The food aggregator company has stored the data of the different orders made by the registered customers in their online portal. They want to analyze the data to draw some actionable insights for the business.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>Exploratory Data Analysis (Variable Identification, Univariate analysis, Bi-Variate analysis), Python.</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/foodhub_data_analysis_python/blob/main/README.md" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/E-news Express Project.png" alt="E-news Express Project" />
+							</div>
+							<div class="project-content">
+									<h2>E-news Express Project</h2>
+									<h4>Business Statistics</h4>
+								<p>This project used statistical analysis, a/b testing, and visualization to decide whether the new landing page of an online news portal (E-news Express) is effective enough to gather new subscribers or not.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>Hypothesis Testing, a/b testing, Data Visualization, Statistical Inference.</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/business_statistics_project_Enews/blob/main/README.md" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/ReCell.jpg" alt="ReCell" />
+							</div>
+							<div class="project-content">
+										<h2>ReCell</h2>
+										<h4>Supervised Learning</h4>
+								<p>Analyze the used devices dataset, build a model which will help develop a dynamic pricing strategy for used and refurbished devices, and identify factors that significantly influence the price.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>EDA, Linear Regression, Linear Regression Assumptions, Business insights and Recommendations.</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/supervised_learning_project_Recell/blob/main/README.md" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/INN Hotels.png" alt="INN Hotels" />
+							</div>
+							<div class="project-content">
+										<h2>INN Hotels</h2>
+										<h4>Supervised Learning - Classification</h4>
+								<p>Analyze the data of INN Hotels to find which factors have a high influence on booking cancellations, build a predictive model that can predict which booking is going to be canceled in advance.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>EDA, Data Pre-processing, Logistic regression, Multicollinearity, Finding optimal threshold using AUC-ROC curve, Decision trees.</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/classification_project_NHHotels/blob/main/README.md" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/Easy Visa.jpg" alt="Easy Visa" />
+							</div>
+							<div class="project-content">
+										<h2>Easy Visa</h2>
+										<h4>Ensemble Techniques</h4>
+								<p>Analyze the data of Visa applicants, build a predictive model to facilitate the process of visa approvals, and recommend a suitable profile for the applicants for whom the visa should be certified or denied.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>EDA, Data Preprocessing, Customer Profiling, Bagging Classifiers, Boosting Classifier, Stacking Classifier, Hyperparameter Tuning.</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/ensemble_Project_EasyVisa/blob/main/README.md" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/ReneWind.jpg" alt="ReneWind" />
+							</div>
+							<div class="project-content">
+										<h2>ReneWind</h2>
+										<h4>Model Tuning</h4>
+								<p>"ReneWind" is a company working on improving the machinery/processes involved in the production of wind energy using machine learning and has collected data of generator failure of wind turbines using sensors.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>Up and downsampling, Regularization, Hyperparameter tuning.</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/model_tuning_Renewind/blob/main/README.md" target="_blank" class="project-button">Code Details</a>
+							</div>
+					</div>
+
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/travel booking system.jpg" alt="Travel Booking System" />
+							</div>
+							<div class="project-content">
+								<h2>Travel Booking System</h2>
+								<h4>Database Management System</h4>
+								<p>Designed and implemented a relational database for a simulated travel booking platform where users can book flights, hotels, rental cars, and services. Created a normalized schema and ER diagram to ensure data integrity and support reporting and analytics.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>MySQL, SQL, Relational Schema Design, ER Diagram, Data Normalization, Draw.io / Visio</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/Travel-Booking-System-DBMS/tree/main" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+						
+						<div class="project-card">
+							<div class="project-image">
+								<img src="images/cia_world_factbook.jpg" alt="CIA World Factbook Analysis" />
+							</div>
+							<div class="project-content">
+								<h2>CIA World Factbook Analysis</h2>
+								<h4>SQL & Data Analysis</h4>
+								<p>Analyzed the CIA World Factbook database to extract insights about countries, populations, and global demographics using SQL queries and data visualization techniques.</p>
+								<div class="project-skills">
+									<h3>Skills and Tools</h3>
+									<p>SQL, Data Analysis, Data Visualization, Statistical Analysis, Demographic Research</p>
+								</div>
+								<a href="https://github.com/Sh0hidul/Analyzing-CIA-Factbook-data-using-Sql/blob/main/Analyzing_CIA_Factbook_using_sql.ipynb" target="_blank" class="project-button">Code Details</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Social Links -->
+					<div class="social-links">
+						<a href="https://www.linkedin.com/in/md-shohidul-haque-84932767/" target="_blank" class="social-icon linkedin-icon">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="https://github.com/Sh0hidul" target="_blank" class="social-icon github-icon">
+							<i class="fab fa-github"></i>
+						</a>
+					</div>
+				</section>
+			</div>
+			
+			<!-- Footer -->
+			<footer>
+				<p class="copyright">&copy; All rights reserved | Design: Customised by Md Shohidul Haque</p>
+			</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html> 
